@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily:{
         Charm:["Charm"],
+        Sriracha: ["Sriracha"],
       }
     },
   },

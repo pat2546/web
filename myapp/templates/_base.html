@@ -13,12 +13,56 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 
 	{% compress css %}
 	<link rel="stylesheet"
 		href="{% static 'src/output.css' %}">
 	{% endcompress %}
+	<script>
+    function ThaiDateTime(date) {
+        let monthName = [
+            "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+            "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+        ];
 
+        let year = date.getFullYear() + 543;
+        let month = monthName[date.getMonth()];
+        let numOfDay = date.getDate();
+
+        let hours = date.getHours().toString().padStart(2, "0");
+        let minutes = date.getMinutes().toString().padStart(2, "0");
+        let seconds = date.getSeconds().toString().padStart(2, "0");
+
+        return `${numOfDay} ${month} ${year} ${hours}:${minutes}:${seconds} น.`;
+		}
+
+		
+		function UpdateTime() {
+			let now = ThaiDateTime(new Date());
+			document.getElementById('currentDateTime').innerHTML = now;
+		}
+
+		setInterval(UpdateTime, 1000);
+		function DisplayTable(state) {
+    		document.getElementById('myTable').style.display = state;
+		}
+		function calAverage() {
+            let n1 = Number.parseInt(document.getElementById('num1').value);
+            let n2 = Number.parseInt(document.getElementById('num2').value);
+            let n3 = Number.parseInt(document.getElementById('num3').value);
+            let r = (n1 + n2 + n3) / 3;
+            document.getElementById('result').innerHTML = "ค่าเฉลี่ย    " + r;
+		}
+		function toggleColor() {
+            let head = document.getElementById('head');
+            if (head.style.color === 'blue') {
+                head.style.color = ''; // เปลี่ยนกลับเป็นสีเริ่มต้น
+            } else {
+                head.style.color = 'blue'; // เปลี่ยนเป็นสีน้ำเงิน
+            }
+        }
+	</script>
 </head>
 
 <body>
